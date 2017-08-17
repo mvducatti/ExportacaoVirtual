@@ -20,13 +20,17 @@ cursoEad = 'CV-MP'
 with open('ENROLL.CSV') as csvfile: #Le arquivo .csv 
     readCSV = csv.reader(csvfile, delimiter=',') 
     next(readCSV)   
-    for row in readCSV:                                 
-        if(row[3] == 'student' and credentials.has_key(row[1])):
-            lineArquivoGroup = "{},{},{},{}".format(row[0],cursoEad,row[2],credentials[row[1]])    
-            lineArquivoENROLL = "{},{},{},{}".format(row[0],cursoEad,row[2],row[3])
-
-            fileGroup.append(lineArquivoGroup)    
-            fileEnroll.append(lineArquivoENROLL)
+    for row in readCSV:
+        if(credentials.has_key(row[1])):#Verifica se ele pertence ao grupo do curso EAD CV-MP
+            if(row[3] == 'student'):                
+                lineArquivoGroup = "{},{},{},{}".format(row[0],cursoEad,row[2],credentials[row[1]])    
+                lineArquivoENROLL = "{},{},{},{}".format(row[0],cursoEad,row[2],row[3])
+                
+                fileGroup.append(lineArquivoGroup)
+        else:
+            lineArquivoENROLL = "{},{},{},{}".format(row[0],row[1],row[2],row[3])                                                                     
+                
+        fileEnroll.append(lineArquivoENROLL)
         
 
         #seleciona coluna que tem o código da disciplina e verificar de qual curso
