@@ -20,9 +20,8 @@ cursoEad = 'CV-MP'
 with open('ENROLL.CSV') as csvfile: #Le arquivo .csv 
     readCSV = csv.reader(csvfile, delimiter=',') 
     next(readCSV)   
-    for row in readCSV:             
-                                    
-        if(row[3] == 'student'):
+    for row in readCSV:                                 
+        if(row[3] == 'student' and credentials.has_key(row[1])):
             lineArquivoGroup = "{},{},{},{}".format(row[0],cursoEad,row[2],credentials[row[1]])    
             lineArquivoENROLL = "{},{},{},{}".format(row[0],cursoEad,row[2],row[3])
 
