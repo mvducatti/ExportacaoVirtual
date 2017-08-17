@@ -1,4 +1,5 @@
 import csv
+import re
 
 credentials = {}
 fileGroup = []
@@ -20,13 +21,13 @@ with open('ENROLL.CSV') as csvfile: #Le arquivo .csv
     readCSV = csv.reader(csvfile, delimiter=',') 
     next(readCSV)   
     for row in readCSV:             
-        curso = row[1].strip().split('_')                            
-        
-        lineArquivoGroup = "{},{},{},{}".format(row[0],cursoEad,row[2],credentials[curso[1]])    
-        lineArquivoENROLL = "{},{},{},{}".format(row[0],cursoEad,row[2],row[3])
+                                    
+        if(row[3] == 'student'):
+            lineArquivoGroup = "{},{},{},{}".format(row[0],cursoEad,row[2],credentials[row[1]])    
+            lineArquivoENROLL = "{},{},{},{}".format(row[0],cursoEad,row[2],row[3])
 
-        fileGroup.append(lineArquivoGroup)    
-        fileEnroll.append(lineArquivoENROLL)
+            fileGroup.append(lineArquivoGroup)    
+            fileEnroll.append(lineArquivoENROLL)
         
 
         #seleciona coluna que tem o código da disciplina e verificar de qual curso
