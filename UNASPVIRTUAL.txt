@@ -1,0 +1,3 @@
+HT_CV_MP_SI:HT Sistemas de Informacao N:CV-MP
+HT_CV_MP_CS:HT Comunicacao N:CV-MP
+HT_CV_MP_CC:HT Ciencias Contabeis N:CV-MP
